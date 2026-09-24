@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay Kumar — IT Project Manager & Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Sanjay Kumar — IT Project Manager, Full-Stack Developer and App/CRM Development Lead based in Dubai, UAE.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#0b0f17; --bg-alt:#111726; --card:#151d2e; --card-border:#232d42;
+    --text:#e9edf5; --text-dim:#9aa7bd; --text-faint:#6b7896;
+    --accent:#4f8cff; --accent-2:#22d3ee; --accent-3:#a78bfa;
+    --success:#34d399; --warn:#fbbf24;
+    --radius:16px; --maxw:1080px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6; overflow-x:hidden;
+  }
+  body::before{
+    content:''; position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(ellipse 800px 500px at 15% -10%, rgba(79,140,255,.18), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(167,139,250,.14), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 50% 100%, rgba(34,211,238,.08), transparent 60%);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* nav */
+  header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(11,15,23,.72); border-bottom:1px solid var(--card-border);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-weight:800; font-size:1.05rem; letter-spacing:-.01em;}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex; gap:28px; font-size:.9rem; color:var(--text-dim);}
+  .navlinks a{text-decoration:none; transition:color .15s;}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{display:flex; gap:10px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:10px;
+    font-size:.85rem; font-weight:600; text-decoration:none; border:1px solid var(--card-border);
+    transition:all .15s; cursor:pointer;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-3)); border:none; color:#fff;}
+  .btn-primary:hover{filter:brightness(1.1); transform:translateY(-1px);}
+  .btn-ghost{color:var(--text-dim); background:transparent;}
+  .btn-ghost:hover{color:var(--text); border-color:var(--text-faint);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* hero */
+  .hero{padding:88px 0 64px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600;
+    color:var(--success); background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25);
+    padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--success); box-shadow:0 0 0 3px rgba(52,211,153,.2);}
+  h1{font-size:clamp(2.1rem,5vw,3.4rem); font-weight:800; letter-spacing:-.02em; line-height:1.08; max-width:820px;}
+  h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent-2) 60%,var(--accent-3)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p.lead{margin-top:20px; font-size:1.08rem; color:var(--text-dim); max-width:640px;}
+  .hero-actions{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .hero-meta{display:flex; gap:24px; margin-top:44px; flex-wrap:wrap;}
+  .hero-meta div{display:flex; align-items:center; gap:8px; font-size:.85rem; color:var(--text-faint);}
+  .hero-meta i{color:var(--accent);}
+
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--card-border); border:1px solid var(--card-border); border-radius:var(--radius); overflow:hidden; margin-top:56px;}
+  .stat{background:var(--bg-alt); padding:24px 20px; text-align:center;}
+  .stat .num{font-size:1.7rem; font-weight:800; color:var(--text);}
+  .stat .lbl{font-size:.76rem; color:var(--text-faint); margin-top:4px; text-transform:uppercase; letter-spacing:.04em;}
+  @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr);} }
+
+  /* section shell */
+  section{padding:72px 0;}
+  .sec-head{margin-bottom:40px;}
+  .sec-tag{font-size:.78rem; font-weight:700; color:var(--accent-2); text-transform:uppercase; letter-spacing:.08em;}
+  .sec-title{font-size:1.9rem; font-weight:800; letter-spacing:-.015em; margin-top:8px;}
+  .sec-sub{color:var(--text-dim); margin-top:10px; max-width:600px;}
+
+  /* projects */
+  .project{
+    background:linear-gradient(180deg,var(--card),var(--bg-alt)); border:1px solid var(--card-border); border-radius:20px;
+    padding:32px; margin-bottom:22px; position:relative; overflow:hidden;
+  }
+  .project::before{content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.5;}
+  .project-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;}
+  .project-icon{
+    width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; color:#fff; flex-shrink:0;
+  }
+  .icon-blue{background:linear-gradient(135deg,#4f8cff,#22d3ee);}
+  .icon-purple{background:linear-gradient(135deg,#a78bfa,#f472b6);}
+  .icon-green{background:linear-gradient(135deg,#34d399,#22d3ee);}
+  .icon-orange{background:linear-gradient(135deg,#fb923c,#fbbf24);}
+  .project-head{display:flex; gap:16px; align-items:flex-start;}
+  .project-title{font-size:1.28rem; font-weight:700; letter-spacing:-.01em;}
+  .project-role{font-size:.84rem; color:var(--text-faint); margin-top:3px;}
+  .badge{
+    font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:100px; white-space:nowrap;
+    border:1px solid var(--card-border); color:var(--text-dim); background:rgba(255,255,255,.03);
+  }
+  .badge.live{color:var(--success); border-color:rgba(52,211,153,.3); background:rgba(52,211,153,.08);}
+  .badge.former{color:var(--text-faint);}
+  .project-desc{color:var(--text-dim); margin-top:18px; font-size:.95rem; max-width:760px;}
+  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:22px;}
+  @media (max-width:760px){ .project-grid{grid-template-columns:1fr;} }
+  .feat-list{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .feat-list li{display:flex; gap:10px; font-size:.87rem; color:var(--text-dim); align-items:flex-start;}
+  .feat-list i{color:var(--accent-2); margin-top:3px; font-size:.78rem;}
+  .mockup{
+    border-radius:12px; border:1px solid var(--card-border); background:var(--bg); padding:16px;
+    display:flex; flex-direction:column; gap:10px; min-height:150px; justify-content:center;
+  }
+  .mockup-bar{height:8px; border-radius:4px; background:var(--card-border);}
+  .mockup-bar.w60{width:60%;} .mockup-bar.w80{width:80%;} .mockup-bar.w40{width:40%;} .mockup-bar.w95{width:95%;}
+  .mockup-row{display:flex; gap:10px; align-items:center;}
+  .mockup-chip{padding:5px 11px; border-radius:100px; font-size:.68rem; font-weight:700; color:#fff;}
+  .tech-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .tech-pill{font-size:.74rem; padding:5px 11px; border-radius:8px; background:rgba(255,255,255,.04); border:1px solid var(--card-border); color:var(--text-faint); font-family:'JetBrains Mono',monospace;}
+  .project-links{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
+
+  /* timeline */
+  .timeline{display:flex; flex-direction:column; gap:0;}
+  .tl-item{display:grid; grid-template-columns:150px 24px 1fr; gap:0; position:relative;}
+  .tl-item:not(:last-child) .tl-line{position:absolute; left:161px; top:26px; bottom:-28px; width:2px; background:var(--card-border);}
+  .tl-date{font-size:.8rem; color:var(--text-faint); padding-top:2px; font-family:'JetBrains Mono',monospace;}
+  .tl-dot-wrap{display:flex; justify-content:center;}
+  .tl-dot{width:12px; height:12px; border-radius:50%; background:var(--accent); margin-top:4px; box-shadow:0 0 0 4px rgba(79,140,255,.15);}
+  .tl-body{padding-bottom:36px;}
+  .tl-role{font-weight:700; font-size:1.02rem;}
+  .tl-org{color:var(--accent-2); font-size:.88rem; margin-top:2px;}
+  .tl-desc{color:var(--text-dim); font-size:.88rem; margin-top:8px; max-width:600px;}
+  @media (max-width:640px){ .tl-item{grid-template-columns:90px 20px 1fr;} .tl-item:not(:last-child) .tl-line{left:100px;} }
+
+  /* skills */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
+  .skill-card{background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px;}
+  .skill-card i{color:var(--accent); font-size:1.1rem; margin-bottom:10px;}
+  .skill-card h4{font-size:.92rem; font-weight:700; margin-bottom:6px;}
+  .skill-card p{font-size:.8rem; color:var(--text-faint);}
+
+  /* education / achievements */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){ .two-col{grid-template-columns:1fr;} }
+  .list-card{background:var(--card); border:1px solid var(--card-border); border-radius:16px; padding:26px;}
+  .list-card h3{font-size:1rem; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+  .list-card h3 i{color:var(--accent-3);}
+  .edu-item{padding:12px 0; border-bottom:1px solid var(--card-border);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item .deg{font-weight:600; font-size:.9rem;}
+  .edu-item .sch{color:var(--text-dim); font-size:.82rem; margin-top:2px;}
+  .edu-item .yr{color:var(--text-faint); font-size:.76rem; margin-top:2px; font-family:'JetBrains Mono',monospace;}
+  .ach-list{list-style:none; display:flex; flex-direction:column; gap:12px;}
+  .ach-list li{display:flex; gap:10px; font-size:.85rem; color:var(--text-dim);}
+  .ach-list i{color:var(--warn); margin-top:3px;}
+
+  /* contact */
+  .contact-card{
+    background:linear-gradient(135deg,rgba(79,140,255,.12),rgba(167,139,250,.10));
+    border:1px solid var(--card-border); border-radius:24px; padding:52px 40px; text-align:center;
+  }
+  .contact-card h2{font-size:1.8rem; font-weight:800; letter-spacing:-.015em;}
+  .contact-card p{color:var(--text-dim); margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto;}
+  .contact-row{display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;}
+
+  footer{border-top:1px solid var(--card-border); padding:28px 0; margin-top:20px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:.8rem; color:var(--text-faint);}
+
+  ::selection{background:rgba(79,140,255,.35);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Sanjay<span>Kumar</span></div>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="mailto:sanjay.senthilkumar2026@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+      <a class="btn btn-primary" href="#contact">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span> Open to new opportunities — Dubai, UAE</div>
+      <h1>Building <span class="grad">production apps, CRMs &amp; e-commerce systems</span> end-to-end.</h1>
+      <p class="lead">IT Project Manager and Full-Stack Developer with hands-on experience shipping a healthcare platform, a multi-tenant omnichannel CRM, Shopify storefronts and messaging apps — from architecture and cloud deployment through to team leadership.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-rocket"></i> View projects</a>
+        <a class="btn btn-ghost" href="tel:+971567147867"><i class="fa-solid fa-phone"></i> +971 56 714 7867</a>
+        <a class="btn btn-ghost" href="https://github.com/sanjaykumartech19-source" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+      <div class="hero-meta">
+        <div><i class="fa-solid fa-location-dot"></i> Dubai, UAE</div>
+        <div><i class="fa-regular fa-envelope"></i> sanjay.senthilkumar2026@gmail.com</div>
+        <div><i class="fa-solid fa-graduation-cap"></i> MCA — AI &amp; Machine Learning (ongoing)</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="num">4+</div><div class="lbl">Production systems shipped</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">Apps live in daily use</div></div>
+        <div class="stat"><div class="num">4</div><div class="lbl">Social/CRM channels integrated</div></div>
+        <div class="stat"><div class="num">200+</div><div class="lbl">Participants supported (meeting app)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Selected Work</div>
+        <div class="sec-title">Projects</div>
+        <p class="sec-sub">Four systems I built and shipped end-to-end — from product scope through architecture, development and deployment.</p>
+      </div>
+
+      <!-- HealthPass -->
+      <div class="project">
+        <div class="project-top">
+          <div class="project-head">
+            <div class="project-icon icon-blue"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <div class="project-title">HealthPass</div>
+              <div class="project-role">Patient healthcare app &middot; mycare clinic, Dubai</div>
+            </div>
+          </div>
+          <span class="badge live"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Live in production</span>
+        </div>
+        <p class="project-desc">A patient-facing healthcare platform built and deployed end-to-end: appointment booking, a personal health dashboard, family health monitoring, wearable device integration (WHOOP, Fitbit, Oura, Garmin and more), and a tiered membership system (Basic / Plus / Corporate) with gated AI health features.</p>
+        <div class="project-grid">
+          <ul class="feat-list">
+            <li><i class="fa-solid fa-check"></i> Appointment booking &amp; scheduling with reschedule flow</li>
+            <li><i class="fa-solid fa-check"></i> Health dashboard with vitals, trends &amp; AI-assisted insights</li>
+            <li><i class="fa-solid fa-check"></i> Family health monitoring across multiple linked members</li>
+            <li><i class="fa-solid fa-check"></i> Cloud wearable sync (WHOOP, Fitbit, Oura, Garmin, Polar, Withings)</li>
+            <li><i class="fa-solid fa-check"></i> Tiered membership &amp; paywall (Basic / Plus / Corporate)</li>
+          </ul>
+          <div class="mockup">
+            <div class="mockup-row"><div class="mockup-chip" style="background:#4f8cff;">Dashboard</div><div class="mockup-bar w40"></div></div>
+            <div class="mockup-bar w95"></div>
+            <div class="mockup-bar w80"></div>
+            <div class="mockup-row"><div class="mockup-chip" style="background:#34d399;">Plus</div><div class="mockup-chip" style="background:#a78bfa;">Corporate</div></div>
+            <div class="mockup-bar w60"></div>
+          </div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-pill">Node.js</span><span class="tech-pill">Express</span><span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">REST APIs</span><span class="tech-pill">Wearable APIs</span><span class="tech-pill">GCP / nginx</span>
+        </div>
+      </div>
+
+      <!-- Zuno One CRM -->
+      <div class="project">
+        <div class="project-top">
+          <div class="project-head">
+            <div class="project-icon icon-purple"><i class="fa-solid fa-comments"></i></div>
+            <div>
+              <div class="project-title">Zuno One — Omnichannel CRM</div>
+              <div class="project-role">Multi-tenant support &amp; lead-management platform &middot; mycare clinic, Dubai</div>
+            </div>
+          </div>
+          <span class="badge live"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Live in production</span>
+        </div>
+        <p class="project-desc">A multi-tenant CRM unifying WhatsApp, Instagram, Facebook and email into a single support and lead-management workspace, with real-time messaging, CSAT/NPS tracking, appointment &amp; renewal reminders, and role-based access control.</p>
+        <div class="project-grid">
+          <ul class="feat-list">
+            <li><i class="fa-solid fa-check"></i> WhatsApp, Instagram, Facebook &amp; email channels in one inbox</li>
+            <li><i class="fa-solid fa-check"></i> Real-time messaging with Socket.io, encrypted at rest (AES-256-GCM)</li>
+            <li><i class="fa-solid fa-check"></i> Lead qualification, CSAT/NPS &amp; renewal reminder workflows</li>
+            <li><i class="fa-solid fa-check"></i> Project management module with 6 configurable views</li>
+            <li><i class="fa-solid fa-check"></i> Agent RBAC with granular per-module permissions</li>
+          </ul>
+          <div class="mockup">
+            <div class="mockup-row"><div class="mockup-chip" style="background:#25d366;">WhatsApp</div><div class="mockup-chip" style="background:#e1306c;">Instagram</div><div class="mockup-chip" style="background:#1877f2;">Facebook</div></div>
+            <div class="mockup-bar w80"></div>
+            <div class="mockup-bar w60"></div>
+            <div class="mockup-bar w95"></div>
+            <div class="mockup-bar w40"></div>
+          </div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-pill">Node.js</span><span class="tech-pill">Socket.io</span><span class="tech-pill">Baileys (WhatsApp)</span>
+          <span class="tech-pill">Multi-tenant architecture</span><span class="tech-pill">AES-256-GCM</span><span class="tech-pill">GCP</span>
+        </div>
+      </div>
+
+      <!-- Elilhaam Shopify -->
+      <div class="project">
+        <div class="project-top">
+          <div class="project-head">
+            <div class="project-icon icon-orange"><i class="fa-brands fa-shopify"></i></div>
+            <div>
+              <div class="project-title">Shopify Storefront &amp; Omnichannel Support</div>
+              <div class="project-role">E-commerce &amp; customer support systems &middot; Elilhaam Group, Dubai</div>
+            </div>
+          </div>
+          <span class="badge former">Former role &middot; Oct 2024 – Jun 2026</span>
+        </div>
+        <p class="project-desc">Developed a custom Shopify theme to improve UI/UX and store performance, and built an omnichannel customer support system integrating WhatsApp, Instagram, Facebook and Snapchat for sales and support, alongside vendor coordination and system integration work.</p>
+        <div class="project-grid">
+          <ul class="feat-list">
+            <li><i class="fa-solid fa-check"></i> Custom Shopify theme — improved UI/UX and page performance</li>
+            <li><i class="fa-solid fa-check"></i> Omnichannel support: WhatsApp, Instagram, Facebook &amp; Snapchat</li>
+            <li><i class="fa-solid fa-check"></i> End-to-end IT &amp; e-commerce project ownership</li>
+            <li><i class="fa-solid fa-check"></i> Vendor coordination and system integration</li>
+          </ul>
+          <div class="mockup">
+            <div class="mockup-row"><div class="mockup-chip" style="background:#95BF47;">Shopify</div><div class="mockup-chip" style="background:#fffc00; color:#000;">Snapchat</div></div>
+            <div class="mockup-bar w60"></div>
+            <div class="mockup-bar w95"></div>
+            <div class="mockup-bar w40"></div>
+          </div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-pill">Shopify Liquid</span><span class="tech-pill">Theme Development</span>
+          <span class="tech-pill">Social Commerce APIs</span><span class="tech-pill">Vendor Ops</span>
+        </div>
+      </div>
+
+      <!-- Appzia -->
+      <div class="project">
+        <div class="project-top">
+          <div class="project-head">
+            <div class="project-icon icon-green"><i class="fa-solid fa-video"></i></div>
+            <div>
+              <div class="project-title">Secure Messaging &amp; Meeting Apps</div>
+              <div class="project-role">Mobile applications &middot; Appzia Tech, Coimbatore, India</div>
+            </div>
+          </div>
+          <span class="badge former">Former role &middot; Jan 2024 – Sep 2024</span>
+        </div>
+        <p class="project-desc">Developed and launched a secure messaging application on the Google Play Store with file sharing, group chats, and voice/video calls, plus a meeting application supporting 200+ participants without relying on a central server.</p>
+        <div class="project-grid">
+          <ul class="feat-list">
+            <li><i class="fa-solid fa-check"></i> Secure messaging app published on Google Play</li>
+            <li><i class="fa-solid fa-check"></i> File sharing, group chats &amp; voice/video calling</li>
+            <li><i class="fa-solid fa-check"></i> Meeting app for 200+ participants, no server dependency</li>
+            <li><i class="fa-solid fa-check"></i> Group conferencing features built from the ground up</li>
+          </ul>
+          <div class="mockup">
+            <div class="mockup-row"><div class="mockup-chip" style="background:#34d399;">200+ users</div></div>
+            <div class="mockup-bar w80"></div>
+            <div class="mockup-bar w60"></div>
+            <div class="mockup-bar w95"></div>
+          </div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-pill">Mobile Development</span><span class="tech-pill">P2P / Serverless Calling</span>
+          <span class="tech-pill">Google Play</span><span class="tech-pill">Real-time Media</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Career</div>
+        <div class="sec-title">Experience</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-date">Jul 2026 — Present</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-role">IT Project Manager / App Development Lead</div>
+            <div class="tl-org">mycare clinic, Dubai, UAE</div>
+            <div class="tl-desc">Own IT delivery end-to-end: leading digital marketing and application development, shipping the HealthPass patient app and Zuno One CRM, and managing cloud infrastructure (GCP, nginx, domain/DNS, TLS).</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-line"></div>
+          <div class="tl-date">Oct 2024 — Jun 2026</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-role">IT Manager &amp; Project Manager / Senior Developer</div>
+            <div class="tl-org">Elilhaam Group, Dubai, UAE</div>
+            <div class="tl-desc">Led end-to-end IT and e-commerce projects, built a custom Shopify theme and an omnichannel support system, managed vendor coordination and cross-functional teams.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Jan 2024 — Sep 2024</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-role">Junior Application Developer</div>
+            <div class="tl-org">Appzia Tech, Coimbatore, India</div>
+            <div class="tl-desc">Developed and launched a secure messaging application on Google Play, and a serverless meeting app supporting 200+ participants.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Toolbox</div>
+        <div class="sec-title">Core Skills</div>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-card"><i class="fa-solid fa-diagram-project"></i><h4>IT Project Management</h4><p>End-to-end delivery, cross-functional team leadership, stakeholder management.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-code"></i><h4>Full-Stack Development</h4><p>Node.js, Express, REST APIs, HTML/CSS/JavaScript.</p></div>
+        <div class="skill-card"><i class="fa-brands fa-shopify"></i><h4>Shopify &amp; E-commerce</h4><p>Custom theme development, store performance &amp; UX optimization.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-headset"></i><h4>CRM &amp; Omnichannel</h4><p>WhatsApp, Instagram, Facebook &amp; Snapchat integration into unified support workflows.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-cloud"></i><h4>Cloud &amp; Infrastructure</h4><p>GCP, nginx, DNS/TLS, deployment &amp; system integration.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-bullhorn"></i><h4>Digital Marketing</h4><p>Social channel strategy driving acquisition and engagement.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-database"></i><h4>Database Management</h4><p>MongoDB and relational data modeling for production systems.</p></div>
+        <div class="skill-card"><i class="fa-solid fa-users-gear"></i><h4>Team Leadership</h4><p>Supervising cross-functional teams to ensure on-time delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">Background</div>
+        <div class="sec-title">Education &amp; Achievements</div>
+      </div>
+      <div class="two-col">
+        <div class="list-card">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+          <div class="edu-item">
+            <div class="deg">MCA — Artificial Intelligence &amp; Machine Learning</div>
+            <div class="sch">Jain University</div>
+            <div class="yr">2024 – 2026 &middot; Ongoing</div>
+          </div>
+          <div class="edu-item">
+            <div class="deg">BCA — Bachelor of Computer Science</div>
+            <div class="sch">Sri Krishna Adithya College of Arts and Science</div>
+            <div class="yr">2021 – 2024 &middot; 85%</div>
+          </div>
+        </div>
+        <div class="list-card">
+          <h3><i class="fa-solid fa-award"></i> Achievements</h3>
+          <ul class="ach-list">
+            <li><i class="fa-solid fa-star"></i> Awarded 3-Year Scholarship for BCA program</li>
+            <li><i class="fa-solid fa-star"></i> Recognized by the Chief Minister of Tamil Nadu for technological innovation</li>
+            <li><i class="fa-solid fa-star"></i> Honored by MLA of Tamil Nadu for contribution to application development</li>
+            <li><i class="fa-solid fa-star"></i> Best Achiever in App Development (2020)</li>
+            <li><i class="fa-solid fa-star"></i> Awarded by Sudhesi Iyakkam (2020) for innovation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <h2>Let's build something together.</h2>
+        <p>Open to IT Project Manager, IT Manager, and Full-Stack Developer roles across the UAE. Reach out directly — I usually reply within a day.</p>
+        <div class="contact-row">
+          <a class="btn btn-primary" href="mailto:sanjay.senthilkumar2026@gmail.com"><i class="fa-regular fa-envelope"></i> sanjay.senthilkumar2026@gmail.com</a>
+          <a class="btn btn-ghost" href="tel:+971567147867"><i class="fa-solid fa-phone"></i> +971 56 714 7867</a>
+          <a class="btn btn-ghost" href="https://github.com/sanjaykumartech19-source" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; <span id="yr"></span> Sanjay Kumar &middot; Dubai, UAE</div>
+    <div>Built with HTML, CSS &amp; JavaScript</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
