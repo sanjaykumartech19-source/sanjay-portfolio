@@ -1,490 +1,756 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanjay Kumar — IT Project Manager & Full-Stack Developer</title>
-<meta name="description" content="Portfolio of Sanjay Kumar — IT Project Manager, Full-Stack Developer and App/CRM Development Lead based in Dubai, UAE.">
-<link rel="icon" href="data:,">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-  :root{
-    --bg:#0b0f17; --bg-alt:#111726; --card:#151d2e; --card-border:#232d42;
-    --text:#e9edf5; --text-dim:#9aa7bd; --text-faint:#6b7896;
-    --accent:#4f8cff; --accent-2:#22d3ee; --accent-3:#a78bfa;
-    --success:#34d399; --warn:#fbbf24;
-    --radius:16px; --maxw:1080px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    line-height:1.6; overflow-x:hidden;
-  }
-  body::before{
-    content:''; position:fixed; inset:0; z-index:-1;
-    background:
-      radial-gradient(ellipse 800px 500px at 15% -10%, rgba(79,140,255,.18), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(167,139,250,.14), transparent 60%),
-      radial-gradient(ellipse 900px 600px at 50% 100%, rgba(34,211,238,.08), transparent 60%);
-  }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
-  a{color:inherit;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-
-  /* nav */
-  header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(11,15,23,.72); border-bottom:1px solid var(--card-border);}
-  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
-  .brand{font-weight:800; font-size:1.05rem; letter-spacing:-.01em;}
-  .brand span{color:var(--accent);}
-  .navlinks{display:flex; gap:28px; font-size:.9rem; color:var(--text-dim);}
-  .navlinks a{text-decoration:none; transition:color .15s;}
-  .navlinks a:hover{color:var(--text);}
-  .nav-cta{display:flex; gap:10px;}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:10px;
-    font-size:.85rem; font-weight:600; text-decoration:none; border:1px solid var(--card-border);
-    transition:all .15s; cursor:pointer;
-  }
-  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-3)); border:none; color:#fff;}
-  .btn-primary:hover{filter:brightness(1.1); transform:translateY(-1px);}
-  .btn-ghost{color:var(--text-dim); background:transparent;}
-  .btn-ghost:hover{color:var(--text); border-color:var(--text-faint);}
-  @media (max-width:760px){ .navlinks{display:none;} }
-
-  /* hero */
-  .hero{padding:88px 0 64px;}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600;
-    color:var(--success); background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25);
-    padding:6px 12px; border-radius:100px; margin-bottom:20px;
-  }
-  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--success); box-shadow:0 0 0 3px rgba(52,211,153,.2);}
-  h1{font-size:clamp(2.1rem,5vw,3.4rem); font-weight:800; letter-spacing:-.02em; line-height:1.08; max-width:820px;}
-  h1 .grad{background:linear-gradient(135deg,var(--accent),var(--accent-2) 60%,var(--accent-3)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .hero p.lead{margin-top:20px; font-size:1.08rem; color:var(--text-dim); max-width:640px;}
-  .hero-actions{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
-  .hero-meta{display:flex; gap:24px; margin-top:44px; flex-wrap:wrap;}
-  .hero-meta div{display:flex; align-items:center; gap:8px; font-size:.85rem; color:var(--text-faint);}
-  .hero-meta i{color:var(--accent);}
-
-  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--card-border); border:1px solid var(--card-border); border-radius:var(--radius); overflow:hidden; margin-top:56px;}
-  .stat{background:var(--bg-alt); padding:24px 20px; text-align:center;}
-  .stat .num{font-size:1.7rem; font-weight:800; color:var(--text);}
-  .stat .lbl{font-size:.76rem; color:var(--text-faint); margin-top:4px; text-transform:uppercase; letter-spacing:.04em;}
-  @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr);} }
-
-  /* section shell */
-  section{padding:72px 0;}
-  .sec-head{margin-bottom:40px;}
-  .sec-tag{font-size:.78rem; font-weight:700; color:var(--accent-2); text-transform:uppercase; letter-spacing:.08em;}
-  .sec-title{font-size:1.9rem; font-weight:800; letter-spacing:-.015em; margin-top:8px;}
-  .sec-sub{color:var(--text-dim); margin-top:10px; max-width:600px;}
-
-  /* projects */
-  .project{
-    background:linear-gradient(180deg,var(--card),var(--bg-alt)); border:1px solid var(--card-border); border-radius:20px;
-    padding:32px; margin-bottom:22px; position:relative; overflow:hidden;
-  }
-  .project::before{content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.5;}
-  .project-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;}
-  .project-icon{
-    width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
-    font-size:1.3rem; color:#fff; flex-shrink:0;
-  }
-  .icon-blue{background:linear-gradient(135deg,#4f8cff,#22d3ee);}
-  .icon-purple{background:linear-gradient(135deg,#a78bfa,#f472b6);}
-  .icon-green{background:linear-gradient(135deg,#34d399,#22d3ee);}
-  .icon-orange{background:linear-gradient(135deg,#fb923c,#fbbf24);}
-  .project-head{display:flex; gap:16px; align-items:flex-start;}
-  .project-title{font-size:1.28rem; font-weight:700; letter-spacing:-.01em;}
-  .project-role{font-size:.84rem; color:var(--text-faint); margin-top:3px;}
-  .badge{
-    font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:100px; white-space:nowrap;
-    border:1px solid var(--card-border); color:var(--text-dim); background:rgba(255,255,255,.03);
-  }
-  .badge.live{color:var(--success); border-color:rgba(52,211,153,.3); background:rgba(52,211,153,.08);}
-  .badge.former{color:var(--text-faint);}
-  .project-desc{color:var(--text-dim); margin-top:18px; font-size:.95rem; max-width:760px;}
-  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:22px;}
-  @media (max-width:760px){ .project-grid{grid-template-columns:1fr;} }
-  .feat-list{list-style:none; display:flex; flex-direction:column; gap:9px;}
-  .feat-list li{display:flex; gap:10px; font-size:.87rem; color:var(--text-dim); align-items:flex-start;}
-  .feat-list i{color:var(--accent-2); margin-top:3px; font-size:.78rem;}
-  .mockup{
-    border-radius:12px; border:1px solid var(--card-border); background:var(--bg); padding:16px;
-    display:flex; flex-direction:column; gap:10px; min-height:150px; justify-content:center;
-  }
-  .mockup-bar{height:8px; border-radius:4px; background:var(--card-border);}
-  .mockup-bar.w60{width:60%;} .mockup-bar.w80{width:80%;} .mockup-bar.w40{width:40%;} .mockup-bar.w95{width:95%;}
-  .mockup-row{display:flex; gap:10px; align-items:center;}
-  .mockup-chip{padding:5px 11px; border-radius:100px; font-size:.68rem; font-weight:700; color:#fff;}
-  .tech-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
-  .tech-pill{font-size:.74rem; padding:5px 11px; border-radius:8px; background:rgba(255,255,255,.04); border:1px solid var(--card-border); color:var(--text-faint); font-family:'JetBrains Mono',monospace;}
-  .project-links{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
-
-  /* timeline */
-  .timeline{display:flex; flex-direction:column; gap:0;}
-  .tl-item{display:grid; grid-template-columns:150px 24px 1fr; gap:0; position:relative;}
-  .tl-item:not(:last-child) .tl-line{position:absolute; left:161px; top:26px; bottom:-28px; width:2px; background:var(--card-border);}
-  .tl-date{font-size:.8rem; color:var(--text-faint); padding-top:2px; font-family:'JetBrains Mono',monospace;}
-  .tl-dot-wrap{display:flex; justify-content:center;}
-  .tl-dot{width:12px; height:12px; border-radius:50%; background:var(--accent); margin-top:4px; box-shadow:0 0 0 4px rgba(79,140,255,.15);}
-  .tl-body{padding-bottom:36px;}
-  .tl-role{font-weight:700; font-size:1.02rem;}
-  .tl-org{color:var(--accent-2); font-size:.88rem; margin-top:2px;}
-  .tl-desc{color:var(--text-dim); font-size:.88rem; margin-top:8px; max-width:600px;}
-  @media (max-width:640px){ .tl-item{grid-template-columns:90px 20px 1fr;} .tl-item:not(:last-child) .tl-line{left:100px;} }
-
-  /* skills */
-  .skill-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
-  .skill-card{background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px;}
-  .skill-card i{color:var(--accent); font-size:1.1rem; margin-bottom:10px;}
-  .skill-card h4{font-size:.92rem; font-weight:700; margin-bottom:6px;}
-  .skill-card p{font-size:.8rem; color:var(--text-faint);}
-
-  /* education / achievements */
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-  @media (max-width:760px){ .two-col{grid-template-columns:1fr;} }
-  .list-card{background:var(--card); border:1px solid var(--card-border); border-radius:16px; padding:26px;}
-  .list-card h3{font-size:1rem; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
-  .list-card h3 i{color:var(--accent-3);}
-  .edu-item{padding:12px 0; border-bottom:1px solid var(--card-border);}
-  .edu-item:last-child{border-bottom:none;}
-  .edu-item .deg{font-weight:600; font-size:.9rem;}
-  .edu-item .sch{color:var(--text-dim); font-size:.82rem; margin-top:2px;}
-  .edu-item .yr{color:var(--text-faint); font-size:.76rem; margin-top:2px; font-family:'JetBrains Mono',monospace;}
-  .ach-list{list-style:none; display:flex; flex-direction:column; gap:12px;}
-  .ach-list li{display:flex; gap:10px; font-size:.85rem; color:var(--text-dim);}
-  .ach-list i{color:var(--warn); margin-top:3px;}
-
-  /* contact */
-  .contact-card{
-    background:linear-gradient(135deg,rgba(79,140,255,.12),rgba(167,139,250,.10));
-    border:1px solid var(--card-border); border-radius:24px; padding:52px 40px; text-align:center;
-  }
-  .contact-card h2{font-size:1.8rem; font-weight:800; letter-spacing:-.015em;}
-  .contact-card p{color:var(--text-dim); margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto;}
-  .contact-row{display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;}
-
-  footer{border-top:1px solid var(--card-border); padding:28px 0; margin-top:20px;}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:.8rem; color:var(--text-faint);}
-
-  ::selection{background:rgba(79,140,255,.35);}
-</style>
-</head>
-<body>
-
-<header>
-  <nav class="wrap">
-    <div class="brand">Sanjay<span>Kumar</span></div>
-    <div class="navlinks">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="mailto:sanjay.senthilkumar2026@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
-      <a class="btn btn-primary" href="#contact">Let's talk</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow"><span class="dot"></span> Open to new opportunities — Dubai, UAE</div>
-      <h1>Building <span class="grad">production apps, CRMs &amp; e-commerce systems</span> end-to-end.</h1>
-      <p class="lead">IT Project Manager and Full-Stack Developer with hands-on experience shipping a healthcare platform, a multi-tenant omnichannel CRM, Shopify storefronts and messaging apps — from architecture and cloud deployment through to team leadership.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-rocket"></i> View projects</a>
-        <a class="btn btn-ghost" href="tel:+971567147867"><i class="fa-solid fa-phone"></i> +971 56 714 7867</a>
-        <a class="btn btn-ghost" href="https://github.com/sanjaykumartech19-source" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-      </div>
-      <div class="hero-meta">
-        <div><i class="fa-solid fa-location-dot"></i> Dubai, UAE</div>
-        <div><i class="fa-regular fa-envelope"></i> sanjay.senthilkumar2026@gmail.com</div>
-        <div><i class="fa-solid fa-graduation-cap"></i> MCA — AI &amp; Machine Learning &middot; 91%</div>
-      </div>
-
-      <div class="stats">
-        <div class="stat"><div class="num">4+</div><div class="lbl">Production systems shipped</div></div>
-        <div class="stat"><div class="num">2</div><div class="lbl">Apps live in daily use</div></div>
-        <div class="stat"><div class="num">4</div><div class="lbl">Social/CRM channels integrated</div></div>
-        <div class="stat"><div class="num">200+</div><div class="lbl">Participants supported (meeting app)</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-tag">Selected Work</div>
-        <div class="sec-title">Projects</div>
-        <p class="sec-sub">Four systems I built and shipped end-to-end — from product scope through architecture, development and deployment.</p>
-      </div>
-
-      <!-- HealthPass -->
-      <div class="project">
-        <div class="project-top">
-          <div class="project-head">
-            <div class="project-icon icon-blue"><i class="fa-solid fa-heart-pulse"></i></div>
-            <div>
-              <div class="project-title">HealthPass</div>
-              <div class="project-role">Patient healthcare app &middot; mycare clinic, Dubai</div>
-            </div>
-          </div>
-          <span class="badge live"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Live in production</span>
-        </div>
-        <p class="project-desc">A patient-facing healthcare platform built and deployed end-to-end: appointment booking, a personal health dashboard, family health monitoring, wearable device integration (WHOOP, Fitbit, Oura, Garmin and more), and a tiered membership system (Basic / Plus / Corporate) with gated AI health features.</p>
-        <div class="project-grid">
-          <ul class="feat-list">
-            <li><i class="fa-solid fa-check"></i> Appointment booking &amp; scheduling with reschedule flow</li>
-            <li><i class="fa-solid fa-check"></i> Health dashboard with vitals, trends &amp; AI-assisted insights</li>
-            <li><i class="fa-solid fa-check"></i> Family health monitoring across multiple linked members</li>
-            <li><i class="fa-solid fa-check"></i> Cloud wearable sync (WHOOP, Fitbit, Oura, Garmin, Polar, Withings)</li>
-            <li><i class="fa-solid fa-check"></i> Tiered membership &amp; paywall (Basic / Plus / Corporate)</li>
-          </ul>
-          <div class="mockup">
-            <div class="mockup-row"><div class="mockup-chip" style="background:#4f8cff;">Dashboard</div><div class="mockup-bar w40"></div></div>
-            <div class="mockup-bar w95"></div>
-            <div class="mockup-bar w80"></div>
-            <div class="mockup-row"><div class="mockup-chip" style="background:#34d399;">Plus</div><div class="mockup-chip" style="background:#a78bfa;">Corporate</div></div>
-            <div class="mockup-bar w60"></div>
-          </div>
-        </div>
-        <div class="tech-row">
-          <span class="tech-pill">Node.js</span><span class="tech-pill">Express</span><span class="tech-pill">MongoDB</span>
-          <span class="tech-pill">REST APIs</span><span class="tech-pill">Wearable APIs</span><span class="tech-pill">GCP / nginx</span>
-        </div>
-      </div>
-
-      <!-- Zuno One CRM -->
-      <div class="project">
-        <div class="project-top">
-          <div class="project-head">
-            <div class="project-icon icon-purple"><i class="fa-solid fa-comments"></i></div>
-            <div>
-              <div class="project-title">Zuno One — Omnichannel CRM</div>
-              <div class="project-role">Multi-tenant support &amp; lead-management platform &middot; mycare clinic, Dubai</div>
-            </div>
-          </div>
-          <span class="badge live"><i class="fa-solid fa-circle" style="font-size:6px;"></i> Live in production</span>
-        </div>
-        <p class="project-desc">A multi-tenant CRM unifying WhatsApp, Instagram, Facebook and email into a single support and lead-management workspace, with real-time messaging, CSAT/NPS tracking, appointment &amp; renewal reminders, and role-based access control.</p>
-        <div class="project-grid">
-          <ul class="feat-list">
-            <li><i class="fa-solid fa-check"></i> WhatsApp, Instagram, Facebook &amp; email channels in one inbox</li>
-            <li><i class="fa-solid fa-check"></i> Real-time messaging with Socket.io, encrypted at rest (AES-256-GCM)</li>
-            <li><i class="fa-solid fa-check"></i> Lead qualification, CSAT/NPS &amp; renewal reminder workflows</li>
-            <li><i class="fa-solid fa-check"></i> Project management module with 6 configurable views</li>
-            <li><i class="fa-solid fa-check"></i> Agent RBAC with granular per-module permissions</li>
-          </ul>
-          <div class="mockup">
-            <div class="mockup-row"><div class="mockup-chip" style="background:#25d366;">WhatsApp</div><div class="mockup-chip" style="background:#e1306c;">Instagram</div><div class="mockup-chip" style="background:#1877f2;">Facebook</div></div>
-            <div class="mockup-bar w80"></div>
-            <div class="mockup-bar w60"></div>
-            <div class="mockup-bar w95"></div>
-            <div class="mockup-bar w40"></div>
-          </div>
-        </div>
-        <div class="tech-row">
-          <span class="tech-pill">Node.js</span><span class="tech-pill">Socket.io</span><span class="tech-pill">Baileys (WhatsApp)</span>
-          <span class="tech-pill">Multi-tenant architecture</span><span class="tech-pill">AES-256-GCM</span><span class="tech-pill">GCP</span>
-        </div>
-      </div>
-
-      <!-- Elilhaam Shopify -->
-      <div class="project">
-        <div class="project-top">
-          <div class="project-head">
-            <div class="project-icon icon-orange"><i class="fa-brands fa-shopify"></i></div>
-            <div>
-              <div class="project-title">Shopify Storefront &amp; Omnichannel Support</div>
-              <div class="project-role">E-commerce &amp; customer support systems &middot; Elilhaam Group, Dubai</div>
-            </div>
-          </div>
-          <span class="badge former">Former role &middot; Oct 2024 – Jun 2026</span>
-        </div>
-        <p class="project-desc">Developed a custom Shopify theme to improve UI/UX and store performance, and built an omnichannel customer support system integrating WhatsApp, Instagram, Facebook and Snapchat for sales and support, alongside vendor coordination and system integration work.</p>
-        <div class="project-grid">
-          <ul class="feat-list">
-            <li><i class="fa-solid fa-check"></i> Custom Shopify theme — improved UI/UX and page performance</li>
-            <li><i class="fa-solid fa-check"></i> Omnichannel support: WhatsApp, Instagram, Facebook &amp; Snapchat</li>
-            <li><i class="fa-solid fa-check"></i> End-to-end IT &amp; e-commerce project ownership</li>
-            <li><i class="fa-solid fa-check"></i> Vendor coordination and system integration</li>
-          </ul>
-          <div class="mockup">
-            <div class="mockup-row"><div class="mockup-chip" style="background:#95BF47;">Shopify</div><div class="mockup-chip" style="background:#fffc00; color:#000;">Snapchat</div></div>
-            <div class="mockup-bar w60"></div>
-            <div class="mockup-bar w95"></div>
-            <div class="mockup-bar w40"></div>
-          </div>
-        </div>
-        <div class="tech-row">
-          <span class="tech-pill">Shopify Liquid</span><span class="tech-pill">Theme Development</span>
-          <span class="tech-pill">Social Commerce APIs</span><span class="tech-pill">Vendor Ops</span>
-        </div>
-      </div>
-
-      <!-- Appzia -->
-      <div class="project">
-        <div class="project-top">
-          <div class="project-head">
-            <div class="project-icon icon-green"><i class="fa-solid fa-video"></i></div>
-            <div>
-              <div class="project-title">Secure Messaging &amp; Meeting Apps</div>
-              <div class="project-role">Mobile applications &middot; Appzia Tech, Coimbatore, India</div>
-            </div>
-          </div>
-          <span class="badge former">Former role &middot; Jan 2024 – Sep 2024</span>
-        </div>
-        <p class="project-desc">Developed and launched a secure messaging application on the Google Play Store with file sharing, group chats, and voice/video calls, plus a meeting application supporting 200+ participants without relying on a central server.</p>
-        <div class="project-grid">
-          <ul class="feat-list">
-            <li><i class="fa-solid fa-check"></i> Secure messaging app published on Google Play</li>
-            <li><i class="fa-solid fa-check"></i> File sharing, group chats &amp; voice/video calling</li>
-            <li><i class="fa-solid fa-check"></i> Meeting app for 200+ participants, no server dependency</li>
-            <li><i class="fa-solid fa-check"></i> Group conferencing features built from the ground up</li>
-          </ul>
-          <div class="mockup">
-            <div class="mockup-row"><div class="mockup-chip" style="background:#34d399;">200+ users</div></div>
-            <div class="mockup-bar w80"></div>
-            <div class="mockup-bar w60"></div>
-            <div class="mockup-bar w95"></div>
-          </div>
-        </div>
-        <div class="tech-row">
-          <span class="tech-pill">Mobile Development</span><span class="tech-pill">P2P / Serverless Calling</span>
-          <span class="tech-pill">Google Play</span><span class="tech-pill">Real-time Media</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-tag">Career</div>
-        <div class="sec-title">Experience</div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-line"></div>
-          <div class="tl-date">Jul 2026 — Present</div>
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-body">
-            <div class="tl-role">IT Project Manager / App Development Lead</div>
-            <div class="tl-org">mycare clinic, Dubai, UAE</div>
-            <div class="tl-desc">Own IT delivery end-to-end: leading digital marketing and application development, shipping the HealthPass patient app and Zuno One CRM, and managing cloud infrastructure (GCP, nginx, domain/DNS, TLS).</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-line"></div>
-          <div class="tl-date">Oct 2024 — Jun 2026</div>
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-body">
-            <div class="tl-role">IT Manager &amp; Project Manager / Senior Developer</div>
-            <div class="tl-org">Elilhaam Group, Dubai, UAE</div>
-            <div class="tl-desc">Led end-to-end IT and e-commerce projects, built a custom Shopify theme and an omnichannel support system, managed vendor coordination and cross-functional teams.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">Jan 2024 — Sep 2024</div>
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-body">
-            <div class="tl-role">Junior Application Developer</div>
-            <div class="tl-org">Appzia Tech, Coimbatore, India</div>
-            <div class="tl-desc">Developed and launched a secure messaging application on Google Play, and a serverless meeting app supporting 200+ participants.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-tag">Toolbox</div>
-        <div class="sec-title">Core Skills</div>
-      </div>
-      <div class="skill-grid">
-        <div class="skill-card"><i class="fa-solid fa-diagram-project"></i><h4>IT Project Management</h4><p>End-to-end delivery, cross-functional team leadership, stakeholder management.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-code"></i><h4>Full-Stack Development</h4><p>Node.js, Express, REST APIs, HTML/CSS/JavaScript.</p></div>
-        <div class="skill-card"><i class="fa-brands fa-shopify"></i><h4>Shopify &amp; E-commerce</h4><p>Custom theme development, store performance &amp; UX optimization.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-headset"></i><h4>CRM &amp; Omnichannel</h4><p>WhatsApp, Instagram, Facebook &amp; Snapchat integration into unified support workflows.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-cloud"></i><h4>Cloud &amp; Infrastructure</h4><p>GCP, nginx, DNS/TLS, deployment &amp; system integration.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-bullhorn"></i><h4>Digital Marketing</h4><p>Social channel strategy driving acquisition and engagement.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-database"></i><h4>Database Management</h4><p>MongoDB and relational data modeling for production systems.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-users-gear"></i><h4>Team Leadership</h4><p>Supervising cross-functional teams to ensure on-time delivery.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-tag">Background</div>
-        <div class="sec-title">Education &amp; Achievements</div>
-      </div>
-      <div class="two-col">
-        <div class="list-card">
-          <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-          <div class="edu-item">
-            <div class="deg">MCA — Artificial Intelligence &amp; Machine Learning</div>
-            <div class="sch">Jain University</div>
-            <div class="yr">2024 – 2026 &middot; 91%</div>
-          </div>
-          <div class="edu-item">
-            <div class="deg">BCA — Bachelor of Computer Science</div>
-            <div class="sch">Sri Krishna Adithya College of Arts and Science</div>
-            <div class="yr">2021 – 2024 &middot; 85%</div>
-          </div>
-        </div>
-        <div class="list-card">
-          <h3><i class="fa-solid fa-award"></i> Achievements</h3>
-          <ul class="ach-list">
-            <li><i class="fa-solid fa-star"></i> Awarded 3-Year Scholarship for BCA program</li>
-            <li><i class="fa-solid fa-star"></i> Recognized by the Chief Minister of Tamil Nadu for technological innovation</li>
-            <li><i class="fa-solid fa-star"></i> Honored by MLA of Tamil Nadu for contribution to application development</li>
-            <li><i class="fa-solid fa-star"></i> Best Achiever in App Development (2020)</li>
-            <li><i class="fa-solid fa-star"></i> Awarded by Sudhesi Iyakkam (2020) for innovation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact-card">
-        <h2>Let's build something together.</h2>
-        <p>Open to IT Project Manager, IT Manager, and Full-Stack Developer roles across the UAE. Reach out directly — I usually reply within a day.</p>
-        <div class="contact-row">
-          <a class="btn btn-primary" href="mailto:sanjay.senthilkumar2026@gmail.com"><i class="fa-regular fa-envelope"></i> sanjay.senthilkumar2026@gmail.com</a>
-          <a class="btn btn-ghost" href="tel:+971567147867"><i class="fa-solid fa-phone"></i> +971 56 714 7867</a>
-          <a class="btn btn-ghost" href="https://github.com/sanjaykumartech19-source" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div>&copy; <span id="yr"></span> Sanjay Kumar &middot; Dubai, UAE</div>
-    <div>Built with HTML, CSS &amp; JavaScript</div>
-  </div>
-</footer>
-
+<html class="scroll-smooth" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Sanjay Kumar — IT Project Manager &amp; Full-Stack Developer</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-container":"#bdffdb","inverse-on-surface":"#eef0ff","on-secondary":"#ffffff","primary-container":"#2563eb","on-primary-container":"#eeefff","surface-dim":"#d2d9f4","on-tertiary-fixed":"#002113","surface":"#faf8ff","on-primary-fixed":"#00174b","on-surface-variant":"#434655","on-tertiary-fixed-variant":"#005236","secondary-fixed-dim":"#6bd8cb","surface-bright":"#faf8ff","background":"#faf8ff","on-error":"#ffffff","outline-variant":"#c3c6d7","on-primary":"#ffffff","surface-variant":"#dae2fd","secondary":"#006a61","on-background":"#131b2e","surface-container-highest":"#dae2fd","secondary-fixed":"#89f5e7","inverse-primary":"#b4c5ff","on-primary-fixed-variant":"#003ea8","surface-container-lowest":"#ffffff","tertiary-container":"#007d55","on-secondary-fixed-variant":"#005049","inverse-surface":"#283044","outline":"#737686","tertiary-fixed-dim":"#4edea3","tertiary-fixed":"#6ffbbe","on-secondary-fixed":"#00201d","surface-container":"#eaedff","secondary-container":"#86f2e4","surface-container-high":"#e2e7ff","on-tertiary":"#ffffff","on-secondary-container":"#006f66","on-error-container":"#93000a","error":"#ba1a1a","primary-fixed-dim":"#b4c5ff","tertiary":"#006242","on-surface":"#131b2e","surface-container-low":"#f2f3ff","primary":"#004ac6","error-container":"#ffdad6","primary-fixed":"#dbe1ff","surface-tint":"#0053db"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-lg":"2rem","space-sm":"0.5rem","gutter":"1.5rem","space-xl":"2.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","margin-lg":"5rem","margin-md":"3rem","margin":"1.5rem"},"fontFamily":{"headline-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-mono-sm":["JetBrains Mono"],"label-mono-lg":["JetBrains Mono"],"label-mono-xs":["JetBrains Mono"],"body-md":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},"fontSize":{"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-mono-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-mono-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"500"}],"label-mono-xs":["10px",{"lineHeight":"14px","letterSpacing":"0.05em","fontWeight":"600"}],"body-md":["15px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.025em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl border-b border-outline-variant/50"><div class="h-20 max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><a class="flex items-center gap-space-sm group shrink-0" data-path="overview" href="#"><div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-container to-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold shadow-sm ring-1 ring-primary/20 group-hover:scale-105 transition-transform">SK</div><div class="flex flex-col text-left"><span class="font-title-md text-title-md font-semibold text-on-surface group-hover:text-primary transition-colors tracking-tight">Sanjay Kumar</span><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">IT Project Manager &amp; Lead</span></div></a></div><nav class="hidden xl:flex items-center gap-space-xs p-1 bg-surface-container-low/60 rounded-xl" data-active-classes="text-primary font-title-md bg-surface-container-high rounded-lg"><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all" data-path="projects" href="#">Projects</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all" data-path="experience" href="#">Experience</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all" data-path="skills" href="#">Skills</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all" data-path="education-awards" href="#">Education &amp; Awards</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-sm sm:gap-space-md shrink-0"><div class="hidden lg:flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-lowest border border-outline-variant/60 rounded-full"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant font-medium">Available in Dubai, UAE</span></div><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/70 text-on-surface hover:bg-surface-container-high hover:text-on-surface transition-all font-label-mono-sm text-label-mono-sm" href="mailto:sanjay.senthilkumar2026@gmail.com"><span class="material-symbols-outlined text-[16px]">mail</span><span>Email</span></a><a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-sm hover:bg-primary transition-all" href="#contact"><span class="material-symbols-outlined text-[18px]">forum</span><span class="hidden md:inline">Let's talk</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full overflow-hidden pb-space-xl">
+<!-- Ambient subtle background accent -->
+<div class="absolute top-0 right-1/4 -z-10 w-96 h-96 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 left-10 -z-10 w-80 h-80 bg-secondary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg pt-space-lg md:pt-space-xl">
+<!-- Eyebrow Pill -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-sm mb-space-md">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary"></span>
+</span>
+<span class="font-label-mono-xs text-label-mono-xs font-semibold text-tertiary uppercase tracking-wider">Open to new opportunities — Dubai, UAE</span>
+</div>
+<!-- Main Heading -->
+<h1 class="font-display text-headline-lg-mobile md:text-display max-w-4xl tracking-tight text-on-surface mb-space-md">
+        Building production apps, <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">CRMs &amp; e-commerce</span> systems end-to-end.
+      </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed mb-space-lg">
+        IT Project Manager and Full-Stack Developer with hands-on experience shipping a healthcare platform, a multi-tenant omnichannel CRM, Shopify storefronts and messaging apps — from architecture and cloud deployment through to team leadership.
+      </p>
+<!-- Action Buttons Row -->
+<div class="flex flex-wrap items-center gap-space-sm sm:gap-space-md mb-space-lg">
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-sm hover:bg-primary transition-all duration-200" href="#projects">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+<span>View Projects</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-sm text-label-mono-sm shadow-sm hover:bg-surface-container transition-all duration-200" href="tel:+971567147867">
+<span class="material-symbols-outlined text-[18px] text-primary">call</span>
+<span>+971 56 714 7867</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-sm text-label-mono-sm shadow-sm hover:bg-surface-container transition-all duration-200" href="https://github.com/sanjaykumartech19-source" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>GitHub</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-label-mono-sm text-label-mono-sm shadow-sm hover:bg-surface-container transition-all duration-200" href="mailto:sanjay.senthilkumar2026@gmail.com">
+<span class="material-symbols-outlined text-[18px] text-tertiary">mail</span>
+<span>sanjay.senthilkumar2026@gmail.com</span>
+</a>
+</div>
+<!-- Meta Pills Row -->
+<div class="flex flex-wrap items-center gap-space-sm pb-space-xl">
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">pin_drop</span>
+<span class="font-label-mono-xs text-label-mono-xs font-medium uppercase tracking-wider">Location: Dubai, UAE</span>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">school</span>
+<span class="font-label-mono-xs text-label-mono-xs font-medium uppercase tracking-wider">Education: MCA — AI &amp; Machine Learning · 91%</span>
+</div>
+</div>
+<!-- 4-Column Stat Grid -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-label-mono-xs text-label-mono-xs uppercase text-on-surface-variant tracking-wider font-semibold">Systems Shipped</span>
+<div class="mt-space-sm">
+<div class="font-display text-headline-lg font-bold text-primary">4+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Production systems engineered &amp; deployed</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-label-mono-xs text-label-mono-xs uppercase text-on-surface-variant tracking-wider font-semibold">Daily Active Platforms</span>
+<div class="mt-space-sm">
+<div class="font-display text-headline-lg font-bold text-secondary">2</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Enterprise apps live in daily healthcare usage</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-label-mono-xs text-label-mono-xs uppercase text-on-surface-variant tracking-wider font-semibold">Omnichannel Channels</span>
+<div class="mt-space-sm">
+<div class="font-display text-headline-lg font-bold text-tertiary">4</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Unified social, messaging &amp; email pipelines</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-label-mono-xs text-label-mono-xs uppercase text-on-surface-variant tracking-wider font-semibold">Conferencing Scale</span>
+<div class="mt-space-sm">
+<div class="font-display text-headline-lg font-bold text-primary-container">200+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Concurrent meeting participants supported</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SELECTED PROJECTS SECTION (#projects) -->
+<section class="w-full py-space-xl bg-surface-container-low" id="projects">
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<!-- Section Header -->
+<div class="flex flex-col gap-space-xs mb-space-xl">
+<div class="inline-flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-mono-xs text-label-mono-xs uppercase tracking-widest text-primary font-bold">SELECTED WORK</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Four systems I built and shipped end-to-end — from product scope through architecture, development and deployment.
+        </p>
+</div>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-lg">
+<!-- CARD 1: HealthPass -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col">
+<!-- Header Meta -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider block">mycare clinic · Dubai, UAE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mt-space-xs">HealthPass — Patient Healthcare Platform</h3>
+</div>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-on-tertiary-container/30 text-tertiary font-label-mono-xs text-label-mono-xs font-semibold shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Live in production
+              </span>
+</div>
+<!-- Description -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              A patient-facing healthcare platform built and deployed end-to-end: appointment booking, a personal health dashboard, family health monitoring, wearable device integration (WHOOP, Fitbit, Oura, Garmin and more), and a tiered membership system (Basic / Plus / Corporate) with gated AI health features.
+            </p>
+<!-- Visual Preview UI Mockup -->
+<div class="bg-surface-container rounded-lg p-space-md mb-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">ecg_heart</span>
+<span class="font-label-mono-xs text-label-mono-xs font-bold text-on-surface">Vitals Telemetry Engine</span>
+</div>
+<!-- Membership tier badges -->
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-surface-container-high text-on-surface font-medium">Basic</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-primary-container text-on-primary font-bold">Plus</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-tertiary text-on-tertiary font-bold">Corporate</span>
+</div>
+</div>
+<!-- Vitals Mockup Row -->
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="bg-surface-container-lowest p-space-xs rounded flex flex-col items-center text-center">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Heart Rate</span>
+<span class="font-title-md text-title-md font-bold text-primary">68 <span class="text-[10px] font-normal text-on-surface-variant">bpm</span></span>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded flex flex-col items-center text-center">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Recovery</span>
+<span class="font-title-md text-title-md font-bold text-tertiary">94%</span>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded flex flex-col items-center text-center">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Sync API</span>
+<span class="font-title-md text-title-md font-bold text-secondary">Active</span>
+</div>
+</div>
+<!-- Next Appointment Mini Ribbon -->
+<div class="bg-surface-container-lowest p-space-xs rounded flex items-center justify-between text-on-surface text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">event_available</span>
+<span class="font-label-mono-xs text-label-mono-xs">Dr. Al-Maktoum (Cardiology) · Tomorrow 10:30 AM</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-primary font-semibold">Reschedule Flow</span>
+</div>
+</div>
+<!-- Feature Checklist -->
+<ul class="space-y-space-xs mb-space-md">
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Appointment booking &amp; scheduling with reschedule flow</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Health dashboard with vitals, trends &amp; AI-assisted insights</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Family health monitoring across multiple linked members</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Cloud wearable sync (WHOOP, Fitbit, Oura, Garmin, Polar, Withings)</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Tiered membership &amp; paywall (Basic / Plus / Corporate)</span>
+</li>
+</ul>
+</div>
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 pt-space-md border-t-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Node.js</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Express</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">MongoDB</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">REST APIs</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Wearable APIs</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">GCP / nginx</span>
+</div>
+</div>
+<!-- CARD 2: Zuno One -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col">
+<!-- Header Meta -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider block">mycare clinic · Dubai, UAE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mt-space-xs">Zuno One — Omnichannel CRM</h3>
+</div>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-on-tertiary-container/30 text-tertiary font-label-mono-xs text-label-mono-xs font-semibold shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Live in production
+              </span>
+</div>
+<!-- Description -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              A multi-tenant CRM unifying WhatsApp, Instagram, Facebook and email into a single support and lead-management workspace, with real-time messaging, CSAT/NPS tracking, appointment &amp; renewal reminders, and role-based access control.
+            </p>
+<!-- Visual Preview UI Mockup -->
+<div class="bg-surface-container rounded-lg p-space-md mb-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">hub</span>
+<span class="font-label-mono-xs text-label-mono-xs font-bold text-on-surface">Unified Inbox Pipeline</span>
+</div>
+<!-- Channel Indicators -->
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-[#25D366]/20 text-[#075e54] font-bold">WhatsApp</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-[#E1306C]/20 text-[#833ab4] font-bold">IG</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-[#1877F2]/20 text-[#1877F2] font-bold">FB</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-label-mono-xs bg-surface-container-highest text-on-surface font-bold">Email</span>
+</div>
+</div>
+<!-- Message Stream Simulation -->
+<div class="bg-surface-container-lowest p-space-xs rounded space-y-1">
+<div class="flex items-center justify-between text-[11px] font-label-mono-xs text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Lead #4829 · High Value
+                  </span>
+<span>AES-256 Encrypted</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant italic truncate">
+                  "Hello, I'd like to schedule the executive corporate wellness package for 12 members..."
+                </div>
+</div>
+<!-- Workflow Ribbon -->
+<div class="grid grid-cols-3 gap-space-xs text-center font-label-mono-xs text-label-mono-xs">
+<div class="bg-surface-container-lowest p-1 rounded">CSAT: <span class="font-bold text-tertiary">98.4%</span></div>
+<div class="bg-surface-container-lowest p-1 rounded">6 Views: <span class="font-bold text-primary">Kanban/List</span></div>
+<div class="bg-surface-container-lowest p-1 rounded">RBAC: <span class="font-bold text-secondary">Enforced</span></div>
+</div>
+</div>
+<!-- Feature Checklist -->
+<ul class="space-y-space-xs mb-space-md">
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>WhatsApp, Instagram, Facebook &amp; email channels in one inbox</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Real-time messaging with Socket.io, encrypted at rest (AES-256-GCM)</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Lead qualification, CSAT/NPS &amp; renewal reminder workflows</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Project management module with 6 configurable views</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Agent RBAC with granular per-module permissions</span>
+</li>
+</ul>
+</div>
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 pt-space-md border-t-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Node.js</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Socket.io</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Baileys (WhatsApp)</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Multi-tenant Architecture</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">AES-256-GCM</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">GCP</span>
+</div>
+</div>
+<!-- CARD 3: Shopify Storefront -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col">
+<!-- Header Meta -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider block">Elilhaam Group · Dubai, UAE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mt-space-xs">Shopify Storefront &amp; Omnichannel Support</h3>
+</div>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs font-semibold shrink-0">
+                Oct 2024 – Jun 2026
+              </span>
+</div>
+<!-- Description -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              Developed a custom Shopify theme to improve UI/UX and store performance, and built an omnichannel customer support system integrating WhatsApp, Instagram, Facebook and Snapchat for sales and support, alongside vendor coordination and system integration work.
+            </p>
+<!-- Visual Preview UI Mockup -->
+<div class="bg-surface-container rounded-lg p-space-md mb-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs font-bold text-on-surface">Storefront Performance &amp; Conversion</span>
+<span class="font-label-mono-xs text-label-mono-xs text-tertiary font-bold">+38% Speed Score</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-lowest p-space-xs rounded">
+<div class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Theme Stack</div>
+<div class="font-title-md text-title-md font-semibold text-primary">Liquid Engine</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded">
+<div class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Social Sales Channel</div>
+<div class="font-title-md text-title-md font-semibold text-secondary">WhatsApp + Snap</div>
+</div>
+</div>
+</div>
+<!-- Feature Checklist -->
+<ul class="space-y-space-xs mb-space-md">
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Custom Shopify theme — improved UI/UX and page performance</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Omnichannel support: WhatsApp, Instagram, Facebook &amp; Snapchat</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>End-to-end IT &amp; e-commerce project ownership</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Vendor coordination and system integration</span>
+</li>
+</ul>
+</div>
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 pt-space-md border-t-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Shopify Liquid</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Theme Development</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Social Commerce APIs</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Vendor Ops</span>
+</div>
+</div>
+<!-- CARD 4: Secure Messaging & Meeting Apps -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col">
+<!-- Header Meta -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider block">Appzia Tech · Coimbatore, India</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mt-space-xs">Secure Messaging &amp; Meeting Apps</h3>
+</div>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs font-semibold shrink-0">
+                Jan 2024 – Sep 2024
+              </span>
+</div>
+<!-- Description -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              Developed and launched a secure messaging application on the Google Play Store with file sharing, group chats, and voice/video calls, plus a meeting application supporting 200+ participants without relying on a central server.
+            </p>
+<!-- Visual Preview UI Mockup -->
+<div class="bg-surface-container rounded-lg p-space-md mb-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs font-bold text-on-surface">P2P Decentralized Conference Room</span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary font-bold">200+ Live Nodes</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-lowest p-space-xs rounded">
+<span class="material-symbols-outlined text-primary text-[18px]">video_call</span>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface">Serverless Architecture • Low-latency voice &amp; video data pipeline</span>
+</div>
+</div>
+<!-- Feature Checklist -->
+<ul class="space-y-space-xs mb-space-md">
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Secure messaging app published on Google Play</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>File sharing, group chats &amp; voice/video calling</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Meeting app for 200+ participants, no server dependency</span>
+</li>
+<li class="flex items-start gap-space-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0">check_circle</span>
+<span>Group conferencing features built from the ground up</span>
+</li>
+</ul>
+</div>
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 pt-space-md border-t-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Mobile Development</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">P2P / Serverless Calling</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Google Play</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-mono-xs text-label-mono-xs">Real-time Media</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CAREER EXPERIENCE TIMELINE (#experience) -->
+<section class="w-full py-space-xl" id="experience">
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<!-- Section Header -->
+<div class="flex flex-col gap-space-xs mb-space-xl">
+<div class="inline-flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-mono-xs text-label-mono-xs uppercase tracking-widest text-secondary font-bold">PROFESSIONAL TRACK</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Career Experience</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Progressive technical leadership navigating complex enterprise deliveries across the UAE and India.
+        </p>
+</div>
+<!-- Timeline Container -->
+<div class="relative pl-6 md:pl-10 space-y-space-lg before:content-[''] before:absolute before:left-[11px] md:before:left-[19px] before:top-3 before:bottom-3 before:w-[2px] before:bg-surface-container-high">
+<!-- Milestone 1 -->
+<div class="relative group">
+<div class="absolute -left-[29px] md:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">IT Project Manager / App Development Lead</span>
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-primary-container text-on-primary font-label-mono-xs text-label-mono-xs font-semibold w-fit">Jul 2026 — Present</span>
+</div>
+<div class="font-title-md text-title-md text-primary font-semibold mb-space-xs">mycare clinic • Dubai, UAE</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Own IT delivery end-to-end: leading digital marketing and application development, shipping the HealthPass patient app and Zuno One CRM, and managing cloud infrastructure (GCP, nginx, domain/DNS, TLS).
+            </p>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="relative group">
+<div class="absolute -left-[29px] md:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">IT Manager &amp; Project Manager / Senior Developer</span>
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-mono-xs text-label-mono-xs font-semibold w-fit">Oct 2024 — Jun 2026</span>
+</div>
+<div class="font-title-md text-title-md text-secondary font-semibold mb-space-xs">Elilhaam Group • Dubai, UAE</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Led end-to-end IT and e-commerce projects, built a custom Shopify theme and an omnichannel support system, managed vendor coordination and cross-functional teams.
+            </p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="relative group">
+<div class="absolute -left-[29px] md:-left-[37px] top-1.5 w-4 h-4 rounded-full bg-outline ring-4 ring-surface-container-lowest"></div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Junior Application Developer</span>
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-mono-xs text-label-mono-xs font-semibold w-fit">Jan 2024 — Sep 2024</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface-variant font-semibold mb-space-xs">Appzia Tech • Coimbatore, India</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Developed and launched a secure messaging application on Google Play, and a serverless meeting app supporting 200+ participants.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CORE SKILLS & TOOLBOX SECTION (#skills) -->
+<section class="w-full py-space-xl bg-surface-container-low" id="skills">
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<!-- Section Header -->
+<div class="flex flex-col gap-space-xs mb-space-xl">
+<div class="inline-flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-mono-xs text-label-mono-xs uppercase tracking-widest text-tertiary font-bold">CAPABILITIES</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Core Skills &amp; Toolbox</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Bridging technical systems architecture with executive project governance.
+        </p>
+</div>
+<!-- 8-Card Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Skill 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/50 flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">architecture</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">IT Project Management</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            End-to-end delivery ownership, cross-functional leadership, timeline and budget governance, and stakeholder alignment.
+          </p>
+</div>
+<!-- Skill 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">code</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Full-Stack Development</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Node.js, Express, RESTful APIs, robust microservices, real-time WebSockets, and modern responsive JavaScript.
+          </p>
+</div>
+<!-- Skill 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed/50 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Shopify &amp; E-commerce</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Custom Liquid theme engineering, store performance tuning, checkout flow enhancements, and conversion optimization.
+          </p>
+</div>
+<!-- Skill 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">CRM &amp; Omnichannel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Unified WhatsApp, Instagram, Facebook, and Snapchat pipelines for multi-agent support and customer management.
+          </p>
+</div>
+<!-- Skill 5 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/50 flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">cloud_done</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Cloud &amp; Infrastructure</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Google Cloud Platform (GCP), nginx reverse proxy, DNS management, automated TLS certification, and deployment orchestration.
+          </p>
+</div>
+<!-- Skill 6 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">campaign</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Digital Marketing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Data-backed multi-channel campaigns, social acquisition strategies, user retention workflows, and analytics telemetry.
+          </p>
+</div>
+<!-- Skill 7 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed/50 flex items-center justify-center text-tertiary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">database</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Database Management</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            MongoDB schema architecture, indexing, transaction integrity, multi-tenant isolation, and relational data modeling.
+          </p>
+</div>
+<!-- Skill 8 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Team Leadership</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Supervising cross-functional engineering teams, technical mentoring, sprint planning, and ensuring on-time release milestones.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- EDUCATION & HONORS / ACHIEVEMENTS (#education) -->
+<section class="w-full py-space-xl" id="education">
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<!-- Section Header -->
+<div class="flex flex-col gap-space-xs mb-space-xl">
+<div class="inline-flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-mono-xs text-label-mono-xs uppercase tracking-widest text-primary font-bold">CREDENTIALS</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Education &amp; Accolades</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Academic foundations in Artificial Intelligence paired with recognized public honors for software innovation.
+        </p>
+</div>
+<!-- Two-Column Container -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-lg">
+<!-- Column A: Education -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="material-symbols-outlined text-primary text-[24px]">school</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Formal Education</h3>
+</div>
+<div class="space-y-space-md">
+<!-- Degree 1 -->
+<div class="bg-surface-container p-space-md rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant font-semibold">2024 – 2026</span>
+<span class="px-space-sm py-0.5 rounded-full bg-primary-container text-on-primary font-label-mono-xs text-label-mono-xs font-bold">91% Grade</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface mt-space-xs">Master of Computer Applications (MCA)</h4>
+<div class="font-body-sm text-body-sm text-primary font-medium">Artificial Intelligence &amp; Machine Learning</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Jain University</p>
+</div>
+<!-- Degree 2 -->
+<div class="bg-surface-container p-space-md rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant font-semibold">2021 – 2024</span>
+<span class="px-space-sm py-0.5 rounded-full bg-tertiary text-on-tertiary font-label-mono-xs text-label-mono-xs font-bold">85% Grade</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface mt-space-xs">Bachelor of Computer Applications (BCA)</h4>
+<div class="font-body-sm text-body-sm text-primary font-medium">Bachelor of Computer Science</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sri Krishna Adithya College of Arts and Science</p>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm">
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Focus: Distributed AI systems, machine learning architectures, and scalable web engineering.</span>
+</div>
+</div>
+<!-- Column B: Achievements & Accolades -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="material-symbols-outlined text-secondary text-[24px]">military_tech</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Honors &amp; Awards</h3>
+</div>
+<ul class="space-y-space-sm">
+<!-- Honor 1 -->
+<li class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Awarded 3-Year Scholarship</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Merit-based full scholarship for the BCA program in recognition of academic excellence.</p>
+</div>
+</li>
+<!-- Honor 2 -->
+<li class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Recognized by the Chief Minister of Tamil Nadu</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Public government citation honored for impactful technological innovation.</p>
+</div>
+</li>
+<!-- Honor 3 -->
+<li class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Honored by MLA of Tamil Nadu</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Honored for substantial personal contribution to regional application development.</p>
+</div>
+</li>
+<!-- Honor 4 -->
+<li class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Best Achiever in App Development (2020)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Annual regional recognition for demonstrated mobile app architecture capabilities.</p>
+</div>
+</li>
+<!-- Honor 5 -->
+<li class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">emoji_events</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Awarded by Sudhesi Iyakkam (2020)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Honored for innovative engineering contributions and social impact tech initiatives.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT SUITE & CTA (#contact) -->
+<section class="w-full py-space-xl bg-surface-container-low" id="contact">
+<div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-md overflow-hidden">
+<!-- Ambient decorative backdrop inside card -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-fixed/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center relative z-10">
+<!-- Left Column: Copy & Value Proposition -->
+<div class="lg:col-span-7 flex flex-col gap-space-sm">
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-fixed text-primary font-label-mono-xs text-label-mono-xs font-bold w-fit">
+<span class="material-symbols-outlined text-[16px]">handshake</span>
+<span>EXECUTIVE INQUIRY</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+              Let's build something extraordinary together.
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+              Open to IT Project Manager, IT Manager, and Full-Stack Developer roles across Dubai &amp; UAE. Reach out directly — I usually reply within a day.
+            </p>
+<div class="flex flex-wrap gap-space-sm pt-space-sm">
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-title-md text-title-md shadow-sm hover:bg-primary transition-all" href="mailto:sanjay.senthilkumar2026@gmail.com">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Send Email</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-surface-container-high text-on-surface font-title-md text-title-md hover:bg-surface-container-highest transition-all" href="tel:+971567147867">
+<span class="material-symbols-outlined text-[20px] text-primary">call</span>
+<span>+971 56 714 7867</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-surface-container-high text-on-surface font-title-md text-title-md hover:bg-surface-container-highest transition-all" href="https://github.com/sanjaykumartech19-source" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">code</span>
+<span>GitHub Profile</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Interactive Quick Inquire Widget -->
+<div class="lg:col-span-5 bg-surface-container p-space-lg rounded-xl">
+<h3 class="font-title-md text-title-md font-bold text-on-surface mb-space-xs">Direct Quick Message</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Connect directly for immediate UAE schedule alignment.</p>
+<form class="space-y-space-sm" onsubmit="handleInquiry(event)">
+<div>
+<label class="block font-label-mono-xs text-label-mono-xs text-on-surface uppercase mb-1" for="contact-name">Your Name or Organization</label>
+<input class="w-full px-space-md py-space-xs rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="contact-name" placeholder="e.g. Dubai Health Authority" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-mono-xs text-label-mono-xs text-on-surface uppercase mb-1" for="contact-email">Your Email</label>
+<input class="w-full px-space-md py-space-xs rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="contact-email" placeholder="name@company.ae" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-mono-xs text-label-mono-xs text-on-surface uppercase mb-1" for="contact-msg">Role / Project Overview</label>
+<textarea class="w-full px-space-md py-space-xs rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm resize-none" id="contact-msg" placeholder="Project details, technical scope, or role specifications..." required="" rows="3"></textarea>
+</div>
+<button class="w-full py-space-sm px-space-md rounded bg-primary text-on-primary font-title-md text-title-md font-semibold hover:bg-primary-container transition-all flex items-center justify-center gap-space-xs" id="submit-btn" type="submit">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+<span>Send Direct Inquiry</span>
+</button>
+<div class="hidden text-center font-label-mono-xs text-label-mono-xs text-tertiary font-semibold pt-1" id="inquiry-status">
+                Message received! Direct mailto opened.
+              </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+function handleInquiry(e) {
+  e.preventDefault();
+  const name = document.getElementById('contact-name').value;
+  const email = document.getElementById('contact-email').value;
+  const msg = document.getElementById('contact-msg').value;
+
+  const mailtoLink = `mailto:sanjay.senthilkumar2026@gmail.com?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent("Sender Email: " + email + "\n\n" + msg)}`;
+  window.location.href = mailtoLink;
+
+  const status = document.getElementById('inquiry-status');
+  if (status) {
+    status.classList.remove('hidden');
+  }
+}
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/50 py-space-xl"><div class="max-w-[1240px] mx-auto px-margin md:px-margin-md lg:px-margin-lg"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-lg pb-space-lg border-b border-outline-variant/40"><div class="md:col-span-6 flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">SK</div><span class="font-title-md text-title-md font-semibold text-on-surface">Sanjay Kumar</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">IT Project Manager &amp; Full-Stack Technical Lead specializing in digital transformations, enterprise cloud systems, and scalable full-stack web applications.</p><div class="flex items-center gap-space-xs pt-space-xs"><span class="material-symbols-outlined text-on-surface-variant text-[18px]">pin_drop</span><span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase font-medium">Dubai, United Arab Emirates</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-mono-xs text-label-mono-xs text-on-surface font-semibold uppercase tracking-wider">Direct Contact</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="mailto:sanjay.senthilkumar2026@gmail.com"><span class="material-symbols-outlined text-[16px]">alternate_email</span>sanjay.senthilkumar2026@gmail.com</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="tel:+971567147867"><span class="material-symbols-outlined text-[16px]">call</span>+971 56 714 7867</a><div class="flex items-center gap-space-xs text-tertiary pt-space-xs"><span class="material-symbols-outlined text-[16px]">verified</span><span class="font-label-mono-xs text-label-mono-xs uppercase">Gulf Region Timezone (UTC+4)</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-mono-xs text-label-mono-xs text-on-surface font-semibold uppercase tracking-wider">Navigation &amp; Links</span><div class="grid grid-cols-2 gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="projects" href="#">Projects</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="experience" href="#">Experience</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="skills" href="#">Skills</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="education-awards" href="#">Awards</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Inquire</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-space-xs" data-path="code-repositories" href="#"><span class="material-symbols-outlined text-[14px]">code</span>GitHub</a></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm font-label-mono-xs text-label-mono-xs text-on-surface-variant"><span>© 2026 Sanjay Kumar. All rights reserved.</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline">Executive Portfolio</span></div><div class="flex items-center gap-space-md"><a class="inline-flex items-center gap-space-xs font-label-mono-xs text-label-mono-xs text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">vertical_align_top</span><span>Back to top</span></a></div></div></div></footer></body></html>
